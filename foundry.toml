@@ -1,6 +1,37 @@
 [profile.default]
-src = "src"
-out = "out"
-libs = ["lib"]
+solc_version = '0.8.22'
+# The source directory
+src = 'src'
+# The artifact directory
+out = 'out'
+# A list of paths to look for libraries in
+libs = ['node_modules', 'lib']
+# The test directory
+test = 'test'
+# Whether to cache builds or not
+cache = true
+# The cache directory if enabled
+cache_path = 'forge-cache'
+# Import statement remappings
+remappings = [
+  'openzeppelin/=lib/openzeppelin-contracts/contracts',
+]
 
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+[profile.production]
+# strict warnings
+deny_warnings = true
+# optimizer settings
+optimizer = true
+optimizer_runs = 10000000
+via_ir = false
+# Enable gas-reporting for all contracts
+gas_reports = ["*"]
+evm_version = "paris"
+verbosity = 4
+
+[profile.lite]
+optimizer = false
+via_ir = false
+
+[fuzz]
+runs = 1000
