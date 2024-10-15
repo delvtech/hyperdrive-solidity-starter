@@ -36,7 +36,7 @@ contract HelloWorld {
 
         // Open a long position on Hyperdrive.
         (uint256 maturityTime, uint256 longAmount) = hyperdrive.openLong(
-            baseAmount,
+            baseAmount, // base paid
             baseAmount, // the minimum output -- this is a slippage guard
             hyperdrive
                 .getCheckpoint(hyperdrive.latestCheckpoint())
@@ -53,12 +53,10 @@ contract HelloWorld {
         console.log("long amount   = %s", longAmount.toString(18));
         console.log(
             "realized rate = %s%",
-            HyperdriveMath
-                .calculateAPRFromPrice(
-                    baseAmount.divDown(longAmount), // the realized price of the longs
-                    hyperdrive.getPoolConfig().positionDuration // the amount of time before the longs mature
-                )
-                .toString(18)
+            (HyperdriveMath.calculateAPRFromPrice(
+                baseAmount.divDown(longAmount), // the realized price of the longs
+                hyperdrive.getPoolConfig().positionDuration // the amount of time before the longs mature
+            ) * 100).toString(18)
         );
     }
 }
