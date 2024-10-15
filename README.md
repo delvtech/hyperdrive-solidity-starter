@@ -1,19 +1,18 @@
-## Foundry
+## Hyperdrive Solidity Starter
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+This repo should help you get set up to build on top of the [Hyperdrive Protocol](https://github.com/delvtech/hyperdrive). This repo includes a `HelloWorld.sol` file that integrates with Hyperdrive and a `HelloWorld.t.sol` file that demonstrates how to run `helloWorld()`.
 
 ## Usage
+
+### Pre-Install
+
+Copy the `.env_template` and create a filled out `.env` file.
+
+### Install
+
+```shell
+$ forge install
+```
 
 ### Build
 
@@ -24,43 +23,5 @@ $ forge build
 ### Test
 
 ```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+$ forge test -vv
 ```
